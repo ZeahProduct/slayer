@@ -32,9 +32,71 @@
                        0px 2px 1px rgba(0,0,0,0.5);
           text-align: center;
         }
+	    
+	    
+
+	#logo {
+		float: left;
+		width: calc(100% - 6px);
+	    background-color: #47a8e5;
+	    background: linear-gradient(rgba(86,86,86,1), #222);
+	    border: 2px solid black;
+	    padding: 2px;
+	}
+
+	#logo-image {	
+		float: left;
+		margin-left: calc(50% - 53.2px);
+	}
+	    
+	#task {
+	    text-align: center;
+	    width: 80%;
+	    display: table;
+	    margin: 0 auto;
+	}
+	    
+	#rewards {
+	    text-align: center;
+	    width: 80%;
+	    display: none;
+	    margin: 0 auto;
+	}
+	    
+	#taskText:hover, #rewardsText:hover {
+	    transform: scale(1.1);
+	}
+	    
+	#taskText {
+	    position: absolute;
+	    float: left;
+	    margin-left: 20%;
+	    transition: all .2s ease-in-out;	
+	}
+			
+	#rewardsText {
+	    float: right;
+	    margin-right: 20%;	
+	    transition: all .2s ease-in-out;
+	}
     </style>
   </head>
   <body>
-    
+    <div id="main">
+	<div id="logo">
+		<h1 id="taskText">Task</h1>
+			<div id="logo-image">
+				<img src="logo.png" width="53.2", height="70"></img>
+			</div>
+		<h1 id="rewardsText">Rewards</h1>
+	</div>
+	  
+	<div id="task">
+		<h1>Current Task</h1>
+	</div>
+	
+	<div id="rewards">
+		<h1>Rewards</h1>
+	</div>
   </body>
 </html>
