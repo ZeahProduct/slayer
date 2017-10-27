@@ -123,11 +123,15 @@
 		  return Math.floor(Math.random() * (max - min)) + min;
 		}
 		
-		var task = document.getElementById("currentTask");
-		var amount = getRandomInt(25,55);
-		var options = ["Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Bears", "Scorpions", "Birds", "Ankous", "Bats", "Cows", "Dagannoths","Dwarfs","Giants","Ghosts","Skeletons","Goblins","Spiders","Zombies","Rabbits"];
+		var cTask = document.getElementById("currentTask");
 		
-		task.innerHTML = amount + " " + options[Math.floor(Math.random() * options.length)];
+		if (localStorage.task) {
+			cTask.innerHTML = localStorage.task;
+		} else {
+			var amount = getRandomInt(25,55);
+			var options = ["Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Bears", "Scorpions", "Birds", "Ankous", "Bats", "Cows", "Dagannoths","Dwarfs","Giants","Ghosts","Skeletons","Goblins","Spiders","Zombies","Rabbits"];
+			cTask.innerHTML = amount + " " + options[Math.floor(Math.random() * options.length)];
+		}
 	</script>
   </body>
 </html>
