@@ -97,6 +97,7 @@
 		<h1>Current Task</h1>
 		<h3 id="currentTask"></h3>
 		<br>
+		<button id="complete" onclick="complete()">I'm finished!</button>
 	</div>
 	
 	<div id="rewards">
@@ -125,19 +126,42 @@
 		var cTask = document.getElementById("currentTask");
 		var points = document.getElementById("points");
 		
-		if (localStorage.task) {
-			cTask.innerHTML = localStorage.task;
-		} else {
+		var newTask = function() {
 			var amount = getRandomInt(20,51);
 			var options = ["Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Bears", "Scorpions", "Birds", "Ankous", "Bats", "Cows", "Dagannoths","Dwarfs","Giants","Ghosts","Skeletons","Goblins","Spiders","Zombies","Rabbits"];
 			cTask.innerHTML = amount + " " + options[Math.floor(Math.random() * options.length)];
 			localStorage.task = cTask.innerHTML;
 		}
 		
+		if (localStorage.task) {
+			cTask.innerHTML = localStorage.task;
+		} else {
+			newTask();
+		}
+		
 		if (localStorage.points) {
 			points.innerHTML = "Points: " + localStorage.points;
 		} else {
 			localStorage.points = 0;
+		}
+		
+		if (!localStorage.taskTime) {
+			localStorage.taskTime = 0;
+		}
+		
+		var increaseTime = function() {
+			localStorage.taskTime += 1;
+		}
+		
+		setInterval(increaseTime, 1000);
+		
+		var complete = function() {
+			if (localStorage.taskTime >= parseInt(localStorage.task.slice(1,2))*25) {
+				localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(1,2)));
+				newTask();
+			} else {
+				alert("We've detected that you may be cheating. Don't click until you've completed the task!");	
+			}
 		}
 	</script>
   </body>
