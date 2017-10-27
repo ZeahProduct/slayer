@@ -156,9 +156,10 @@
 		setInterval(increaseTime, 1000);
 		
 		var complete = function() {
-			if (localStorage.taskTime >= parseInt(localStorage.task.slice(1,2))*25) {
+			if (localStorage.taskTime >= parseInt(localStorage.task.slice(0,2))*25) {
 				localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(0,2)));
 				newTask();
+				points.innerHTML = "Points: " + localStorage.points;
 			} else {
 				alert("We've detected that you may be cheating. Don't click until you've completed the task!");	
 			}
