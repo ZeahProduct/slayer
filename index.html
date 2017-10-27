@@ -150,7 +150,7 @@
 		}
 		
 		var increaseTime = function() {
-			localStorage.taskTime += 1;
+			localStorage.taskTime = parseInt(localStorage.taskTime) + 1;
 		}
 		
 		setInterval(increaseTime, 1000);
