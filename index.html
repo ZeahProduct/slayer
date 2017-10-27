@@ -98,5 +98,18 @@
 	<div id="rewards">
 		<h1>Rewards</h1>
 	</div>
+	  
+	<script type="text/javascript">
+		var text1 = document.getElementById("taskText");
+		var text2 = document.getElementById("rewardsText")
+		text1.onclick = function() {
+			document.getElementById("rewards").style.display = "none";
+			document.getElementById("task").style.display = "table";
+		};
+		text2.onclick = function() {
+			document.getElementById("task").style.display = "none";
+			document.getElementById("rewards").style.display = "table";
+		};
+	</script>
   </body>
 </html>
