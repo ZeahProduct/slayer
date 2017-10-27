@@ -95,14 +95,13 @@
 	  
 	<div id="task">
 		<h1>Current Task</h1>
-		<br>
 		<h3 id="currentTask"></h3>
+		<br>
 	</div>
 	
 	<div id="rewards">
 		<h1>Rewards</h1>
-		<br>
-		<h3>Points: </h3><h3 id="points">0</h3>
+		<h3 id="points">Points: 0</h3>
 	</div>
 	  
 	<script type="text/javascript">
@@ -136,7 +135,7 @@
 		}
 		
 		if (localStorage.points) {
-			points.innerHTML = localStorage.points;
+			points.innerHTML = "Points: " + localStorage.points;
 		} else {
 			localStorage.points = 0;
 		}
