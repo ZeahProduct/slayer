@@ -25,7 +25,7 @@
         h3 {
           line-height: 0.1em;
           vertical-align: middle;
-          font-size: 18px;
+          font-size: 22px;
           color: #eff1f4;
           padding: 0cm 1cm;
           text-shadow: -1px -1px 1px #aaa,
@@ -102,7 +102,7 @@
 	<div id="rewards">
 		<h1>Rewards</h1>
 		<br>
-		<h3>Points: 0</h3>
+		<h3>Points: </h3><h3 id="points">0</h3>
 	</div>
 	  
 	<script type="text/javascript">
@@ -124,6 +124,7 @@
 		}
 		
 		var cTask = document.getElementById("currentTask");
+		var points = document.getElementById("points");
 		
 		if (localStorage.task) {
 			cTask.innerHTML = localStorage.task;
@@ -132,6 +133,12 @@
 			var options = ["Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Bears", "Scorpions", "Birds", "Ankous", "Bats", "Cows", "Dagannoths","Dwarfs","Giants","Ghosts","Skeletons","Goblins","Spiders","Zombies","Rabbits"];
 			cTask.innerHTML = amount + " " + options[Math.floor(Math.random() * options.length)];
 			localStorage.task = cTask.innerHTML;
+		}
+		
+		if (localStorage.points) {
+			points.innerHTML = localStorage.points;
+		} else {
+			localStorage.points = 0;
 		}
 	</script>
   </body>
