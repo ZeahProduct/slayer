@@ -160,6 +160,7 @@
 				localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(0,2)));
 				newTask();
 				points.innerHTML = "Points: " + localStorage.points;
+				localStorage.taskTime = 0;
 			} else {
 				alert("We've detected that you may be cheating. Don't click until you've completed the task!");	
 			}
