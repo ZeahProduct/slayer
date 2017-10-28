@@ -173,6 +173,7 @@
 		var newTask = function() {
 			if (taskName) {
 				options.push(taskName);
+				localStorage.setItem("options", JSON.stringify(options));
 			}
 			var amount = getRandomInt(20,51);
 			cTask.innerHTML = amount + " " + options[Math.floor(Math.random() * options.length)];
@@ -180,6 +181,7 @@
 			taskName = localStorage.task.slice(3);
 			taskIndex = options.indexOf(taskName);
 			options.splice(taskIndex, 1);
+			localStorage.setItem("options", JSON.stringify(options));
 		}
 		
 		if (localStorage.task) {
