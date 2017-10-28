@@ -138,8 +138,9 @@
 		<h3 id="points">Points: 0</h3>
 		<br>
 		<button class="btn" id="skip" onclick="skip()">Skip (100 Points)</button><br><br>
-		<button class="btn" id="lizards" onclick="lizard()">Unlock Lizardmen (500 Points)</button><br><br>
-		<button class="btn" id="wt" onclick="wintertodt()">Unlock Wintertodt (500 Points)</button><br><br>
+		<button class="btn" id="lizards" onclick="unlock('Lizardmen')">Unlock Lizardmen (500 Points)</button><br><br>
+		<button class="btn" id="wt" onclick="wintertodt('Wintertodt')">Unlock Wintertodt (500 Points)</button><br><br>
+		<button class="btn" id="drag" onclick="wintertodt('Dragons')">Unlock Dragons (500 Points)</button><br><br>
 	</div>
 	  
 	<script type="text/javascript">
@@ -227,14 +228,12 @@
 			}
 		}
 		
-		var wintertodt = function() {
-			options.push("Wintertodt");
-			localStorage.setItem("options", JSON.stringify(options));
-		}
-		
-		var lizard = function() {
-			options.push("Lizardmen");
-			localStorage.setItem("options", JSON.stringify(options));
+		var unlock = function(monster) {
+			if (parseInt(localStorage.points) >= 500) {
+				localStorage.points = String(parseInt(localStorage.points) - 500);
+				options.push(monster);
+				localStorage.setItem("options", JSON.stringify(options));
+			}
 		}
 	</script>
   </body>
