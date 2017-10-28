@@ -163,12 +163,19 @@
 		var options = ["Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Bears", "Scorpions", "Birds", "Ankous", "Bats", "Cows", "Dagannoths","Dwarfs","Giants","Ghosts","Skeletons","Goblins","Spiders","Zombies","Rabbits"];
 		
 		if (localStorage.options) {
-			options = JSON.parse(localStorage.getItem("options"));	
+			options = JSON.parse(localStorage.getItem("options"));
+			
 		} else {
 			localStorage.setItem("options", JSON.stringify(options));	
 		}
 		
 		var taskName, taskIndex;
+		if (localStorage.task) {
+			cTask.innerHTML = localStorage.task;
+			taskName = localStorage.task.slice(3);
+		} else {
+			newTask();
+		}
 		
 		var newTask = function() {
 			if (taskName) {
@@ -182,12 +189,6 @@
 			taskIndex = options.indexOf(taskName);
 			options.splice(taskIndex, 1);
 			localStorage.setItem("options", JSON.stringify(options));
-		}
-		
-		if (localStorage.task) {
-			cTask.innerHTML = localStorage.task;
-		} else {
-			newTask();
 		}
 		
 		if (localStorage.points) {
