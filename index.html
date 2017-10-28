@@ -134,6 +134,8 @@
 	<div id="rewards">
 		<h1>Rewards</h1>
 		<h3 id="points">Points: 0</h3>
+		<br>
+		<button class="btn" id="skip" onclick="skip()">Skip (100 Points)</button>
 	</div>
 	  
 	<script type="text/javascript">
@@ -208,6 +210,13 @@
 				localStorage.taskTime = 0;
 			} else {
 				alert("We've detected that you may be cheating. \nDon't click until you've completed the task!");	
+			}
+		}
+		
+		var skip = function() {
+			if (parseInt(localStorage.points) >= 100) {
+				localStorage.points = String(parseInt(localStorage.points) - 100);
+				newTask();
 			}
 		}
 	</script>
