@@ -169,14 +169,6 @@
 			localStorage.setItem("options", JSON.stringify(options));	
 		}
 		
-		var taskName, taskIndex;
-		if (localStorage.task) {
-			cTask.innerHTML = localStorage.task;
-			taskName = localStorage.task.slice(3);
-		} else {
-			newTask();
-		}
-		
 		var newTask = function() {
 			if (taskName) {
 				options.push(taskName);
@@ -189,6 +181,14 @@
 			taskIndex = options.indexOf(taskName);
 			options.splice(taskIndex, 1);
 			localStorage.setItem("options", JSON.stringify(options));
+		}
+		
+		var taskName, taskIndex;
+		if (localStorage.task) {
+			cTask.innerHTML = localStorage.task;
+			taskName = localStorage.task.slice(3);
+		} else {
+			newTask();
 		}
 		
 		if (localStorage.points) {
@@ -208,7 +208,7 @@
 		setInterval(increaseTime, 1000);
 		
 		var complete = function() {
-			if (localStorage.taskTime >= parseInt(localStorage.task.slice(0,2))*25) {
+			if (localStorage.taskTime >= parseInt(localStorage.task.slice(0,2))*20) {
 				localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(0,2)));
 				newTask();
 				points.innerHTML = "Points: " + localStorage.points;
