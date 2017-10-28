@@ -156,12 +156,26 @@
 		
 		var cTask = document.getElementById("currentTask");
 		var points = document.getElementById("points");
+		var options = ["Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Bears", "Scorpions", "Birds", "Ankous", "Bats", "Cows", "Dagannoths","Dwarfs","Giants","Ghosts","Skeletons","Goblins","Spiders","Zombies","Rabbits"];
+		
+		if (localStorage.options) {
+			options = JSON.parse(localStorage.getItem("options"));	
+		} else {
+			localStorage.setItem("options", JSON.stringify(options));	
+		}
+		
+		var taskName, taskIndex;
 		
 		var newTask = function() {
+			if (taskName) {
+				options.push(taskName);
+			}
 			var amount = getRandomInt(20,51);
-			var options = ["Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Bears", "Scorpions", "Birds", "Ankous", "Bats", "Cows", "Dagannoths","Dwarfs","Giants","Ghosts","Skeletons","Goblins","Spiders","Zombies","Rabbits"];
 			cTask.innerHTML = amount + " " + options[Math.floor(Math.random() * options.length)];
 			localStorage.task = cTask.innerHTML;
+			taskName = localStorage.task.slice(3);
+			taskIndex = options.indexOf(taskName);
+			options.splice(taskIndex, 1);
 		}
 		
 		if (localStorage.task) {
