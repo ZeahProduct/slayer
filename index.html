@@ -131,6 +131,12 @@
 		<h1>Current Task</h1>
 		<h3 id="currentTask"></h3>
 		<br>
+		<br>
+		<h3 id="streak">Streak: 0</h3>
+		<br>
+		<h3>Bonus points are received every 5 tasks.</h3>
+		<br>
+		<br>
 		<button class="btn" id="complete" onclick="complete()">I'm finished!</button>
 	</div>
 	
@@ -210,9 +216,21 @@
 		
 		setInterval(increaseTime, 1000);
 		
+		var streak = 0;
+		if (localStorage.streak) {
+			streak = localStorage.streak;
+			document.getElementById("streak").innerHTML = "Streak: " + String(streak);
+		}
+		
 		var complete = function() {
 			if (localStorage.taskTime >= parseInt(localStorage.task.slice(0,2))*10) {
-				localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(0,2)));
+				streak += 1;
+				document.getElementById("streak").innerHTML = "Streak: " + String(streak);
+				if (localStorage.streak % 5 == 0) {
+					localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(0,2))*2);
+				} else {
+					localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(0,2)));
+				}
 				newTask();
 				points.innerHTML = "Points: " + localStorage.points;
 				localStorage.taskTime = 0;
@@ -226,6 +244,8 @@
 				localStorage.points = String(parseInt(localStorage.points) - 100);
 				newTask();
 				points.innerHTML = "Points: " + localStorage.points;
+				streak = 0;
+				document.getElementById("streak").innerHTML = "Streak: 0";
 			}
 		}
 		
