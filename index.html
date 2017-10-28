@@ -138,6 +138,8 @@
 		<h3 id="points">Points: 0</h3>
 		<br>
 		<button class="btn" id="skip" onclick="skip()">Skip (100 Points)</button>
+		<button class="btn" id="lizards" onclick="lizard()">Unlock Lizardmen (500 Points)</button>
+		<button class="btn" id="wt" onclick="wintertodt()">Unlock Wintertodt (500 Points)</button>
 	</div>
 	  
 	<script type="text/javascript">
@@ -164,7 +166,6 @@
 		
 		if (localStorage.options) {
 			options = JSON.parse(localStorage.getItem("options"));
-			
 		} else {
 			localStorage.setItem("options", JSON.stringify(options));	
 		}
@@ -224,6 +225,16 @@
 				newTask();
 				points.innerHTML = "Points: " + localStorage.points;
 			}
+		}
+		
+		var wintertodt = function() {
+			options.push("Wintertodt");
+			localStorage.setItem("options", JSON.stringify(options));
+		}
+		
+		var lizard = function() {
+			options.push("Lizardmen");
+			localStorage.setItem("options", JSON.stringify(options));
 		}
 	</script>
   </body>
