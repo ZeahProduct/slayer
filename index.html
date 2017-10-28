@@ -219,6 +219,7 @@
 			if (parseInt(localStorage.points) >= 100) {
 				localStorage.points = String(parseInt(localStorage.points) - 100);
 				newTask();
+				points.innerHTML = "Points: " + localStorage.points;
 			}
 		}
 	</script>
