@@ -224,7 +224,7 @@
 		
 		var complete = function() {
 			if (localStorage.taskTime >= parseInt(localStorage.task.slice(0,2))*10) {
-				streak += 1;
+				streak = parseInt(streak)+ 1;
 				document.getElementById("streak").innerHTML = "Streak: " + String(streak);
 				if (localStorage.streak % 5 == 0) {
 					localStorage.points = String(parseInt(localStorage.points) + parseInt(localStorage.task.slice(0,2))*2);
