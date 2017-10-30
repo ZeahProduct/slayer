@@ -206,7 +206,7 @@
 			var index = Math.floor(Math.random() * options.length);
 			cTask.innerHTML = amount + " " + options[index];
 			
-			document.getElementById("pic").innerHTML = "<img src='" + pictures[index-2] + "'><img>"
+			document.getElementById("pic").innerHTML = "<img src=" + pictures[index] + "><img>"
 			
 			localStorage.task = cTask.innerHTML;
 			taskName = localStorage.task.slice(3);
