@@ -146,9 +146,9 @@
 		<h3 id="points">Points: 0</h3>
 		<br>
 		<button class="btn" id="skip" onclick="skip()">Skip (100 Points)</button><br><br>
-		<button class="btn" id="lizards" onclick="unlock('Lizardmen')">Unlock Lizardmen (500 Points)</button><br><br>
-		<button class="btn" id="wt" onclick="wintertodt('Wintertodt')">Unlock Wintertodt (500 Points)</button><br><br>
-		<button class="btn" id="drag" onclick="wintertodt('Dragons')">Unlock Dragons (500 Points)</button><br><br>
+		<button class="btn" id="lizards" onclick="unlock('Lizardmen','https://vignette.wikia.nocookie.net/2007scape/images/2/2b/Lizardman_%28lv_53%29.png/revision/latest/scale-to-width-down/200?cb=20160110070302')">Unlock Lizardmen (500 Points)</button><br><br>
+		<button class="btn" id="wt" onclick="unlock('Wintertodt','https://vignette.wikia.nocookie.net/2007scape/images/7/7d/Tome_of_fire_%28empty%29_detail.png/revision/latest/scale-to-width-down/160?cb=20160908190825')">Unlock Wintertodt (500 Points)</button><br><br>
+		<button class="btn" id="drag" onclick="unlock('Dragons','https://vignette.wikia.nocookie.net/2007scape/images/0/0d/Brutal_red_dragon.png/revision/latest/scale-to-width-down/300?cb=20160609123353')">Unlock Dragons (500 Points)</button><br><br>
 	</div>
 	  
 	<script type="text/javascript">
@@ -268,10 +268,11 @@
 			}
 		}
 		
-		var unlock = function(monster) {
+		var unlock = function(monster, pic) {
 			if (parseInt(localStorage.points) >= 500) {
 				localStorage.points = String(parseInt(localStorage.points) - 500);
 				options.push(monster);
+				pictures.push(pic);
 				localStorage.setItem("options", JSON.stringify(options));
 			}
 		}
