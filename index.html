@@ -130,6 +130,7 @@
 	<div id="task">
 		<h1>Current Task</h1>
 		<h3 id="currentTask"></h3>
+		<div id="pic"></div>
 		<br>
 		<br>
 		<h3 id="streak">Streak: 0</h3>
@@ -171,6 +172,24 @@
 		var cTask = document.getElementById("currentTask");
 		var points = document.getElementById("points");
 		var options = ["Men/Women","Imps","Lesser Demons", "Greater Demons", "Black Demons", "Hellhounds", "Crabs", "Unicorns", "Scorpions", "Birds", "Ankous", "Cows", "Dagannoths","Giants","Ghosts","Skeletons","Goblins","Zombies"];
+		var pictures = ["https://vignette.wikia.nocookie.net/2007scape/images/7/7b/Woman.png/revision/latest/scale-to-width-down/120?cb=20160611020218",
+				"https://vignette.wikia.nocookie.net/2007scape/images/b/b3/Imp.png/revision/latest/scale-to-width-down/120?cb=20160105183437",
+			       	"https://vignette.wikia.nocookie.net/2007scape/images/6/6d/Lesser_demon.png/revision/latest/scale-to-width-down/200?cb=20161129224334",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/5/56/Greater_demon.png/revision/latest/scale-to-width-down/250?cb=20140205212036",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/0/00/Black_demon.png/revision/latest?cb=20130629091540",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/3/3e/Hellhound.png/revision/latest/scale-to-width-down/200?cb=20150828063052",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/e/e4/Sand_Crab.png/revision/latest/scale-to-width-down/250?cb=20160609132827",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/7/7e/Unicorn.png/revision/latest/scale-to-width-down/250?cb=20170220173519",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/a/ab/Scorpion.png/revision/latest/scale-to-width-down/250?cb=20161129124008",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/a/a3/Chicken.png/revision/latest/scale-to-width-down/120?cb=20161207181258",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/4/4f/Ankou.png/revision/latest/scale-to-width-down/110?cb=20160127060849",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/8/84/Cow.png/revision/latest/scale-to-width-down/200?cb=20160613020452",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/b/bb/Dagannoth.png/revision/latest/scale-to-width-down/200?cb=20151125234925",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/b/bd/Hill_giant.png/revision/latest?cb=20130317074630",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/a/ab/Ghost.png/revision/latest/scale-to-width-down/100?cb=20150921144647",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/2/23/Skeleton.png/revision/latest/scale-to-width-down/150?cb=20161130152136",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/d/d2/Goblin.png/revision/latest/scale-to-width-down/150?cb=20170212092103",
+			        "https://vignette.wikia.nocookie.net/2007scape/images/c/c3/Zombie.png/revision/latest?cb=20160509235214"];
 		
 		if (localStorage.options) {
 			options = JSON.parse(localStorage.getItem("options"));
@@ -184,7 +203,11 @@
 				localStorage.setItem("options", JSON.stringify(options));
 			}
 			var amount = getRandomInt(20,51);
-			cTask.innerHTML = amount + " " + options[Math.floor(Math.random() * options.length)];
+			var index = Math.floor(Math.random() * options.length);
+			cTask.innerHTML = amount + " " + options[index];
+			
+			document.getElementById("pic").innerHTML = "<img src='" + pictures[index]+ "'><img>"
+			
 			localStorage.task = cTask.innerHTML;
 			taskName = localStorage.task.slice(3);
 			taskIndex = options.indexOf(taskName);
