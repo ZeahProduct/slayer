@@ -199,7 +199,6 @@
 		
 		var newTask = function() {
 			if (taskName) {
-				options.push(taskName);
 				localStorage.setItem("options", JSON.stringify(options));
 			}
 			var amount = getRandomInt(20,51);
@@ -209,9 +208,6 @@
 			document.getElementById("pic").innerHTML = "<img src=" + pictures[index] + "><img>"
 			
 			localStorage.task = cTask.innerHTML;
-			taskName = localStorage.task.slice(3);
-			taskIndex = options.indexOf(taskName);
-			options.splice(taskIndex, 1);
 			localStorage.setItem("options", JSON.stringify(options));
 		}
 		
